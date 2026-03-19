@@ -117,7 +117,7 @@ const Dashboard = () => {
   }, [invoices])
 
     const currencySymbol = useMemo(() => {
-    if (!invoices || invoices.length === 0) return '$'
+    if (!invoices || invoices.length === 0) return '₹'
     const invCurrency = invoices[0].currency || 'USD'
     const symbolMap = {
       USD: '$',
@@ -129,7 +129,7 @@ const Dashboard = () => {
       SGD: 'S$',
       JPY: '¥',
     }
-    return symbolMap[invCurrency] || '$'
+    return symbolMap[invCurrency] || '₹'
   }, [invoices])
 
   if (isLoading) {

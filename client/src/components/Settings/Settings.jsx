@@ -136,10 +136,11 @@ const Settings = () => {
                   name="email"
                   type="email"
                   value={profileData.email || ''}
-                  onChange={handleChange}
                   fullWidth
                   size="small"
                   required
+                  disabled
+                  helperText="Email cannot be changed"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
