@@ -8,3 +8,4 @@ django-cors-headers>=4.3
 xhtml2pdf>=0.2.11
 Jinja2>=3.1
 python-dotenv>=1.0
+gunicorn>=21.2.0
