@@ -14,9 +14,10 @@ export const getInvoicesByUser = (searchQuery) => async (dispatch) => {
     dispatch({ type: START_LOADING })
     const { data } = await api.getInvoicesByUser(searchQuery)
     dispatch({ type: FETCH_INVOICE_BY_USER, payload: data })
-    dispatch({ type: END_LOADING })
   } catch (error) {
     console.log(error)
+  } finally {
+    dispatch({ type: END_LOADING })
   }
 }
 
@@ -25,9 +26,10 @@ export const getInvoice = (id) => async (dispatch) => {
     dispatch({ type: START_LOADING })
     const { data } = await api.getInvoice(id)
     dispatch({ type: GET_INVOICE, payload: data })
-    dispatch({ type: END_LOADING })
   } catch (error) {
     console.log(error)
+  } finally {
+    dispatch({ type: END_LOADING })
   }
 }
 
@@ -36,13 +38,14 @@ export const createInvoice = (invoice, navigate, openSnackbar) => async (dispatc
     dispatch({ type: START_LOADING })
     const { data } = await api.createInvoice(invoice)
     dispatch({ type: ADD_NEW, payload: data })
-    dispatch({ type: END_LOADING })
     openSnackbar('Invoice created successfully')
     navigate(`/invoice/${data._id}`)
   } catch (error) {
     const message = error?.response?.data?.message || 'Something went wrong'
     openSnackbar(message)
     console.log(error)
+  } finally {
+    dispatch({ type: END_LOADING })
   }
 }
 
